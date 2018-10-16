@@ -21,8 +21,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.measure.quantity.Length;
-import javax.measure.unit.SI;
-import javax.measure.unit.Unit;
+import si.uom.SI;
+import javax.measure.Unit;
 
 import org.geotools.data.DataUtilities;
 import org.geotools.data.simple.SimpleFeatureCollection;
@@ -140,7 +140,7 @@ public class WedgeBufferFeatureCollection extends GXTSimpleFeatureCollection {
 
         private DistanceUnit distanceUnit = DistanceUnit.Default;
 
-        private Unit<Length> targetUnit = SI.METER;
+        private Unit<Length> targetUnit = SI.METRE;
 
         private int count = 0;
 

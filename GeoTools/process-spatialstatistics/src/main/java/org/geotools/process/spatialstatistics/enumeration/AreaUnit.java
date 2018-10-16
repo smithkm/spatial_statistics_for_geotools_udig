@@ -16,6 +16,12 @@
  */
 package org.geotools.process.spatialstatistics.enumeration;
 
+import javax.measure.Unit;
+import javax.measure.quantity.Area;
+import si.uom.SI;
+import tec.uom.se.unit.MetricPrefix;
+import systems.uom.common.USCustomary;
+
 /**
  * Area Unit
  * 
@@ -27,33 +33,43 @@ public enum AreaUnit {
     /**
      * If the units are not specified, or Default is used, the linear unit of the input features' spatial reference is used.
      */
-    Default,
+    Default(null),
     /**
      * SquareMeters
      */
-    SquareMeters,
+    SquareMeters(SI.SQUARE_METRE),
     /**
      * SquareKilometers
      */
-    SquareKilometers,
+    @SuppressWarnings("unchecked")
+    SquareKilometers((Unit<Area>)MetricPrefix.KILO(SI.METRE).pow(2)),
     /**
      * SquareFeet
      */
-    SquareFeet,
+    SquareFeet(USCustomary.SQUARE_FOOT),
     /**
      * SquareYards
      */
-    SquareYards,
+    @SuppressWarnings("unchecked")
+    SquareYards((Unit<Area>)USCustomary.YARD.pow(2)),
     /**
      * SquareMiles
      */
-    SquareMiles,
+    @SuppressWarnings("unchecked")
+    SquareMiles((Unit<Area>)USCustomary.MILE.pow(2)),
     /**
      * Hectare
      */
-    Hectare,
+    Hectare(USCustomary.HECTARE),
     /**
      * Acre
      */
-    Acre
+    Acre(USCustomary.ACRE);
+    
+    public final Unit<Area> unit;
+
+    private AreaUnit(Unit<Area> unit) {
+        this.unit = unit;
+    }
+    
 }

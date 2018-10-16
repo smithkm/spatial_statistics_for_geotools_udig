@@ -20,8 +20,8 @@ import java.util.NoSuchElementException;
 import java.util.logging.Logger;
 
 import javax.measure.quantity.Length;
-import javax.measure.unit.SI;
-import javax.measure.unit.Unit;
+import si.uom.SI;
+import javax.measure.Unit;
 
 import org.geotools.data.DataUtilities;
 import org.geotools.data.simple.SimpleFeatureCollection;
@@ -133,7 +133,7 @@ public class BufferExpressionFeatureCollection extends GXTSimpleFeatureCollectio
 
         private SimpleFeature next;
 
-        private Unit<Length> targetUnit = SI.METER;
+        private Unit<Length> targetUnit = SI.METRE;
 
         private String typeName;
 

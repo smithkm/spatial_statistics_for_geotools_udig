@@ -21,10 +21,11 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.measure.Measure;
 import javax.measure.quantity.Area;
-import javax.measure.unit.SI;
-import javax.measure.unit.Unit;
+import si.uom.SI;
+import tec.uom.se.quantity.Quantities;
+
+import javax.measure.Unit;
 
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureIterator;
@@ -129,11 +130,11 @@ public class AreaProcess extends AbstractStatisticsProcess {
                 }
             } else {
                 Unit<?> distUnit = horCRS.getCoordinateSystem().getAxis(0).getUnit();
-                sourceUnit = (Unit<Area>) distUnit.times(distUnit);
+                sourceUnit = (Unit<Area>) distUnit.multiply(distUnit);
                 dArea = sumArea(features.subCollection(filter));
             }
 
-            dArea = UnitConverter.convertArea(Measure.valueOf(dArea, sourceUnit), targetUnit);
+            dArea = UnitConverter.convertArea(Quantities.getQuantity(dArea, sourceUnit), targetUnit);
         }
         // end process
 

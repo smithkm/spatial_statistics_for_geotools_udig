@@ -21,9 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.measure.converter.UnitConverter;
-import javax.measure.unit.SI;
-import javax.measure.unit.Unit;
+import javax.measure.UnitConverter;
+import javax.measure.quantity.Length;
+
+import si.uom.SI;
+import javax.measure.Unit;
 
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.data.collection.ListFeatureCollection;
@@ -83,9 +85,10 @@ public class RadialLOSOperation extends GeneralOperation {
             if (hor instanceof GeographicCRS) {
                 isGeographic = true;
             } else {
-                Unit<?> unit = hor.getCoordinateSystem().getAxis(0).getUnit();
-                UnitConverter converter = SI.METER.getConverterTo(unit);
-                radius = converter.convert(radius);
+                @SuppressWarnings("unchecked")
+                Unit<Length> unit = (Unit<Length>) hor.getCoordinateSystem().getAxis(0).getUnit();
+                UnitConverter converter = SI.METRE.getConverterTo(unit);
+                radius = converter.convert(radius).doubleValue();
             }
         }
 

@@ -21,7 +21,7 @@ import java.util.NoSuchElementException;
 import java.util.logging.Logger;
 
 import javax.measure.quantity.Length;
-import javax.measure.unit.Unit;
+import javax.measure.Unit;
 
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureIterator;

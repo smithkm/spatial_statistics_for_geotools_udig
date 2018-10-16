@@ -16,6 +16,12 @@
  */
 package org.geotools.process.spatialstatistics.enumeration;
 
+import javax.measure.Unit;
+import javax.measure.quantity.Length;
+import si.uom.SI;
+import tec.uom.se.unit.MetricPrefix;
+import systems.uom.common.USCustomary;
+
 /**
  * Distance Unit
  * 
@@ -27,33 +33,40 @@ public enum DistanceUnit {
     /**
      * If the units are not specified, or Default is used, the linear unit of the input features' spatial reference is used.
      */
-    Default,
+    Default(null),
     /**
      * Meters
      */
-    Meters,
+    Meters(SI.METRE),
     /**
      * Kilometers
      */
-    Kilometers,
+    Kilometers(MetricPrefix.KILO(SI.METRE)),
     /**
      * Inches
      */
-    Inches,
+    Inches(USCustomary.INCH),
     /**
      * Feet
      */
-    Feet,
+    Feet(USCustomary.FOOT),
     /**
      * Yards
      */
-    Yards,
+    Yards(USCustomary.YARD),
     /**
      * Miles
      */
-    Miles,
+    Miles(USCustomary.MILE),
     /**
      * NauticalMiles
      */
-    NauticalMiles
+    NauticalMiles(USCustomary.NAUTICAL_MILE);
+    
+    public final Unit<Length> unit;
+
+    private DistanceUnit(Unit<Length> unit) {
+        this.unit = unit;
+    }
+    
 }

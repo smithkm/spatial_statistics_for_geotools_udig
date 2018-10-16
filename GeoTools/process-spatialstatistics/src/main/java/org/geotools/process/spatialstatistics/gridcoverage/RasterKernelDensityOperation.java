@@ -19,8 +19,8 @@ package org.geotools.process.spatialstatistics.gridcoverage;
 import java.awt.RenderingHints;
 import java.util.logging.Logger;
 
-import javax.measure.unit.SI;
-import javax.measure.unit.Unit;
+import si.uom.SI;
+import javax.measure.Unit;
 import javax.media.jai.BorderExtender;
 import javax.media.jai.JAI;
 import javax.media.jai.KernelJAI;
@@ -99,7 +99,7 @@ public class RasterKernelDensityOperation extends RasterDensityOperation {
             CoordinateReferenceSystem hor = CRS.getHorizontalCRS(crs);
             if (!(hor instanceof GeographicCRS)) {
                 Unit<?> unit = hor.getCoordinateSystem().getAxis(0).getUnit();
-                // UnitConverter converter = SI.METER.getConverterTo(unit);
+                // UnitConverter converter = SI.METRE.getConverterTo(unit);
                 if (unit != null && unit == SI.METRE) {
                     this.scaleArea = scaleArea / 1000000.0;
                 }

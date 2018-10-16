@@ -18,12 +18,12 @@ package org.geotools.process.spatialstatistics.core;
 
 import java.util.logging.Logger;
 
-import javax.measure.Measure;
+import javax.measure.Quantity;
 import javax.measure.quantity.Area;
 import javax.measure.quantity.Length;
-import javax.measure.unit.NonSI;
-import javax.measure.unit.SI;
-import javax.measure.unit.Unit;
+import tec.uom.se.quantity.Quantities;
+
+import javax.measure.Unit;
 
 import org.geotools.process.spatialstatistics.enumeration.AreaUnit;
 import org.geotools.process.spatialstatistics.enumeration.DistanceUnit;
@@ -44,118 +44,32 @@ public class UnitConverter {
 
     public static double convertDistance(double value, DistanceUnit valueUnit,
             Unit<Length> targetUnit) {
-        Measure<Double, Length> measure = Measure.valueOf(value, SI.METER);
-
-        switch (valueUnit) {
-        case Default:
-            return value;
-        case Meters:
-            measure = Measure.valueOf(value, SI.METER);
-            break;
-        case Kilometers:
-            measure = Measure.valueOf(value, SI.KILOMETER);
-            break;
-        case Feet:
-            measure = Measure.valueOf(value, NonSI.FOOT);
-            break;
-        case Inches:
-            measure = Measure.valueOf(value, NonSI.INCH);
-            break;
-        case Miles:
-            measure = Measure.valueOf(value, NonSI.MILE);
-            break;
-        case NauticalMiles:
-            measure = Measure.valueOf(value, NonSI.NAUTICAL_MILE);
-            break;
-        case Yards:
-            measure = Measure.valueOf(value, NonSI.YARD);
-            break;
-        default:
-            return value;
-        }
-
-        return measure.doubleValue(targetUnit);
+        Quantity<Length> measure = Quantities.getQuantity(value, DistanceUnit.Default.unit);
+        
+        return measure.to(targetUnit).getValue().doubleValue();
     }
 
-    public static double convertDistance(Measure<Double, Length> measure, DistanceUnit targetUnit) {
-        double converted = measure.getValue();
-
-        switch (targetUnit) {
-        case Default:
-            return converted;
-        case Meters:
-            converted = measure.doubleValue(SI.METER);
-            break;
-        case Kilometers:
-            converted = measure.doubleValue(SI.KILOMETER);
-            break;
-        case Feet:
-            converted = measure.doubleValue(NonSI.FOOT);
-            break;
-        case Inches:
-            converted = measure.doubleValue(NonSI.INCH);
-            break;
-        case Miles:
-            converted = measure.doubleValue(NonSI.MILE);
-            break;
-        case NauticalMiles:
-            converted = measure.doubleValue(NonSI.NAUTICAL_MILE);
-            break;
-        case Yards:
-            converted = measure.doubleValue(NonSI.YARD);
-            break;
-        default:
-            return converted;
+    public static double convertDistance(Quantity<Length> measure, DistanceUnit targetUnit) {
+        if(targetUnit==DistanceUnit.Default) {
+            return measure.getValue().doubleValue();
+        } else {
+            return measure.to(targetUnit.unit).getValue().doubleValue();
         }
-
-        return converted;
     }
 
-    @SuppressWarnings("unchecked")
-    public static double convertArea(Measure<Double, Area> measure, AreaUnit targetUnit) {
-        double converted = measure.getValue();
-
-        switch (targetUnit) {
-        case Default:
-            return converted;
-        case Acre:
-            Unit<Area> acre = (Unit<Area>) NonSI.MILE.divide(8.0).times(NonSI.FOOT).times(66.0);
-            converted = measure.doubleValue(acre);
-            break;
-        case Hectare:
-            converted = measure.doubleValue(NonSI.HECTARE);
-            break;
-        case SquareFeet:
-            Unit<Area> sq_feet = (Unit<Area>) NonSI.FOOT.times(NonSI.FOOT);
-            converted = measure.doubleValue(sq_feet);
-            break;
-        case SquareKilometers:
-            Unit<Area> sq_km = (Unit<Area>) SI.KILOMETER.times(SI.KILOMETER);
-            converted = measure.doubleValue(sq_km);
-            break;
-        case SquareMeters:
-            converted = measure.doubleValue(SI.SQUARE_METRE);
-            break;
-        case SquareMiles:
-            Unit<Area> sq_mile = (Unit<Area>) NonSI.MILE.times(NonSI.MILE);
-            converted = measure.doubleValue(sq_mile);
-            break;
-        case SquareYards:
-            Unit<Area> sq_yard = (Unit<Area>) NonSI.YARD.times(NonSI.YARD);
-            converted = measure.doubleValue(sq_yard);
-            break;
-        default:
-            return converted;
+    public static double convertArea(Quantity<Area> measure, AreaUnit targetUnit) {
+        if(targetUnit==AreaUnit.Default) {
+            return measure.getValue().doubleValue();
+        } else {
+            return measure.to(targetUnit.unit).getValue().doubleValue();
         }
-
-        return converted;
     }
 
     @SuppressWarnings("unchecked")
     public static Unit<Length> getLengthUnit(CoordinateReferenceSystem crs) {
         CoordinateReferenceSystem horCRS = CRS.getHorizontalCRS(crs);
         if (horCRS instanceof GeographicCRS) {
-            return SI.METER; // default
+            return DistanceUnit.Default.unit;
         } else {
             return (Unit<Length>) horCRS.getCoordinateSystem().getAxis(0).getUnit();
         }
@@ -165,10 +79,10 @@ public class UnitConverter {
     public static Unit<Area> getAreaUnit(CoordinateReferenceSystem crs) {
         CoordinateReferenceSystem horCRS = CRS.getHorizontalCRS(crs);
         if (horCRS instanceof GeographicCRS) {
-            return SI.SQUARE_METRE; // default
+            return AreaUnit.Default.unit;
         } else {
             Unit<?> distUnit = horCRS.getCoordinateSystem().getAxis(0).getUnit();
-            return (Unit<Area>) distUnit.times(distUnit);
+            return (Unit<Area>) distUnit.multiply(distUnit);
         }
     }
 }
