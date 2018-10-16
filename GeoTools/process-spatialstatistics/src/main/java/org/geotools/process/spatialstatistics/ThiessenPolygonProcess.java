@@ -32,7 +32,7 @@ import org.geotools.process.spatialstatistics.operations.ThiessenPolygonOperatio
 import org.geotools.util.logging.Logging;
 import org.opengis.util.ProgressListener;
 
-import com.vividsolutions.jts.geom.Geometry;
+import org.locationtech.jts.geom.Geometry;
 
 /**
  * Creates Thiessen polygons from input point features.

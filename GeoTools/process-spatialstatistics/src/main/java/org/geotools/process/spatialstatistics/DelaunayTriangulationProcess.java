@@ -31,7 +31,7 @@ import org.geotools.process.spatialstatistics.operations.DelaunayTrangulationOpe
 import org.geotools.util.logging.Logging;
 import org.opengis.util.ProgressListener;
 
-import com.vividsolutions.jts.geom.Geometry;
+import org.locationtech.jts.geom.Geometry;
 
 /**
  * Creates delaunay triangulation polygons from input point features.

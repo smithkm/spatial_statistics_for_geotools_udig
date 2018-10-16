@@ -32,7 +32,7 @@ import org.geotools.process.spatialstatistics.enumeration.RasterPixelType;
 import org.geotools.util.logging.Logging;
 import org.jaitools.tiledimage.DiskMemImage;
 
-import com.vividsolutions.jts.geom.Coordinate;
+import org.locationtech.jts.geom.Coordinate;
 
 /**
  * TPS Interpolation based on thin plate spline (TPS) algorithm

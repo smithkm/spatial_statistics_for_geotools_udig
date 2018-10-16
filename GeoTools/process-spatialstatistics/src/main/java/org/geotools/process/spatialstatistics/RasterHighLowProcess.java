@@ -33,7 +33,7 @@ import org.geotools.process.spatialstatistics.gridcoverage.RasterHighLowPointsOp
 import org.geotools.util.logging.Logging;
 import org.opengis.util.ProgressListener;
 
-import com.vividsolutions.jts.geom.Geometry;
+import org.locationtech.jts.geom.Geometry;
 
 /**
  * Finds the highest or lowest points for a polygon geometry.

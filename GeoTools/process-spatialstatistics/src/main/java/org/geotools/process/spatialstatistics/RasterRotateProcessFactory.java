@@ -31,7 +31,7 @@ import org.geotools.process.spatialstatistics.enumeration.ResampleType;
 import org.geotools.util.logging.Logging;
 import org.opengis.util.InternationalString;
 
-import com.vividsolutions.jts.geom.Point;
+import org.locationtech.jts.geom.Point;
 
 /**
  * RasterRotateProcessFactory

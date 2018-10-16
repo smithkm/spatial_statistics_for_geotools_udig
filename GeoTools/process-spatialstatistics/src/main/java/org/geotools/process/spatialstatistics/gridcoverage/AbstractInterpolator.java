@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 import org.geotools.util.logging.Logging;
 
-import com.vividsolutions.jts.geom.Coordinate;
+import org.locationtech.jts.geom.Coordinate;
 
 /**
  * Abstract Interpolator

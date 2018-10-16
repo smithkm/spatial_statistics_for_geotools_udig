@@ -31,7 +31,7 @@ import org.geotools.process.spatialstatistics.operations.DataStatisticsOperation
 import org.geotools.util.logging.Logging;
 import org.opengis.util.InternationalString;
 
-import com.vividsolutions.jts.geom.Geometry;
+import org.locationtech.jts.geom.Geometry;
 
 /**
  * StatisticsGridCoverageProcessFactory

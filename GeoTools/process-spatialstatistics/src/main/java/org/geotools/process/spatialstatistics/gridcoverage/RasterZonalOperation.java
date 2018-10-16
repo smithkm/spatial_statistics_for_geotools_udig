@@ -44,7 +44,7 @@ import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
-import com.vividsolutions.jts.geom.Geometry;
+import org.locationtech.jts.geom.Geometry;
 
 /**
  * Calculates statistics on values of a raster within the zones of another features.
@@ -86,7 +86,7 @@ public class RasterZonalOperation extends RasterProcessingOperation {
         // test intersection
         ReferencedEnvelope gridEnv = new ReferencedEnvelope(valueCoverage.getEnvelope());
         ReferencedEnvelope featureEnv = zoneFeatures.getBounds();
-        com.vividsolutions.jts.geom.Envelope intEnv = featureEnv.intersection(gridEnv);
+        org.locationtech.jts.geom.Envelope intEnv = featureEnv.intersection(gridEnv);
         if (intEnv == null || intEnv.isNull()) {
             // return empty result
             return insertFeatures(zoneFeatures, new Hashtable<Object, StatisticsVisitor>());
