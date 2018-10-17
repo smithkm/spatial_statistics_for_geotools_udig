@@ -469,7 +469,14 @@
       <groupId>it.geosolutions.jaiext.vectorbin</groupId>
       <artifactId>jt-vectorbin</artifactId>
       <version>${jaiext.version}</version>
-    </dependency> 
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.ejml</groupId>
+      <artifactId>ejml-simple</artifactId>
+      <version>0.34</version>
+    </dependency>
     
     <!-- Test dependencies -->
     <dependency>
