@@ -34,6 +34,7 @@
     <imageio.ext.version>1.1.27</imageio.ext.version>
     <jaiext.version>1.1.2</jaiext.version>
     <jt.version>1.5.0</jt.version>
+    <gt.version>${project.version}</gt.version>
   </properties>
   
   <repositories>
@@ -95,72 +96,72 @@
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-api</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-referencing</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-main</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-coverage</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-process</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-grid</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-image</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-jdbc</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-brewer</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-geotiff</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-shapefile</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools.xsd</groupId>
       <artifactId>gt-xsd-gml2</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools.xsd</groupId>
       <artifactId>gt-xsd-gml3</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools.xsd</groupId>
       <artifactId>gt-xsd-sld</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
     </dependency>
     
     <!-- Java Advanced Imaging (JAI) -->
@@ -482,19 +483,19 @@
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-sample-data</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-property</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-epsg-hsql</artifactId>
-      <version>${project.version}</version>
+      <version>${gt.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>

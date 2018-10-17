@@ -28,6 +28,8 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <gt.version>20.0</gt.version>
+    <gt.spatialstatistics.version>${gt.version}</gt.spatialstatistics.version>
+    <gs.version>${project.version}</gs.version>
   </properties>
   
   <repositories>
@@ -124,7 +126,7 @@
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-process-spatialstatistics</artifactId>
-      <version>${gt.version}</version>
+      <version>${gt.spatialstatistics.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
@@ -189,12 +191,12 @@
     <dependency>
       <groupId>org.geoserver</groupId>
       <artifactId>gs-main</artifactId>
-      <version>${project.version}</version>
+      <version>${gs.version}</version>
     </dependency>
     <dependency>
       <groupId>org.geoserver.extension</groupId>
       <artifactId>gs-wps-core</artifactId>
-      <version>${project.version}</version>
+      <version>${gs.version}</version>
     </dependency> 
     <dependency>
       <groupId>junit</groupId>
