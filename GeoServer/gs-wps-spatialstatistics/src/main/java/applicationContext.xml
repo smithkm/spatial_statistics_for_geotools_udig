@@ -31,5 +31,9 @@
         <constructor-arg ref="geoServer" />
         <constructor-arg ref="wpsResourceManager" />
     </bean -->
-
+    
+    <bean class="org.geoserver.platform.ModuleStatusImpl">
+        <constructor-arg index="0" value="gs-wps-spatialstatistics"/>
+        <constructor-arg index="1" value="Spatial Statistics WPS Processes"/>
+    </bean>
 </beans>
